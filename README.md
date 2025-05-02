@@ -1,78 +1,29 @@
+# Button Watcher Chrome Extension
 
-# Button Watcher Backend
+A Chrome extension that helps identify and report broken buttons on webpages. This extension highlights all buttons and links on a page, allows users to flag problematic ones, and stores reports in a Supabase database.
 
-This is the Next.js backend for the Button Watcher Chrome extension. It provides API endpoints for storing and retrieving button reports, as well as an admin dashboard to view and manage reports.
+## Features
 
-## Getting Started
+- 🔍 Highlights all buttons and links on any webpage
+- 🚩 Allows flagging problematic buttons with custom notes
+- 📊 Popup interface to view recent reports
+- 💾 Stores reports in Supabase database
+- 🔄 Works with dynamic content (SPAs, React apps, etc.)
 
-### Prerequisites
+## Project Structure
 
-- Node.js 18+
-- Docker and Docker Compose (for containerized setup)
+### Chrome Extension (This Repository)
 
-### Development Setup
+- Content Script: Injects into webpages to highlight and enable flagging of buttons
+- Popup: React-based interface showing recent reports
+- Background Script: Handles communication with the backend API
 
-1. Install dependencies:
-   ```bash
-   npm install
-   ```
+### Backend (Separate Next.js Project)
 
-2. Set up environment variables:
-   Copy the `.env.example` file to `.env.local` and fill in your Supabase credentials:
-   ```bash
-   cp .env.example .env.local
-   ```
-
-3. Run the development server:
-   ```bash
-   npm run dev
-   ```
-
-4. Open [http://localhost:3000](http://localhost:3000) to view the admin dashboard.
-
-### Docker Setup
-
-1. Build and start the Docker containers:
-   ```bash
-   docker-compose up -d
-   ```
-
-2. The app will be available at [http://localhost:3000](http://localhost:3000).
-
-## API Endpoints
-
-### GET /api/reports
-
-Fetch a list of button reports.
-
-Query parameters:
-- `limit` (optional): Maximum number of reports to return (default: 10)
-- `status` (optional): Filter by status ("read", "unread", "archived")
-
-### POST /api/reports
-
-Submit a new button report.
-
-Request body:
-```json
-{
-  "url": "https://example.com",
-  "text": "Button text",
-  "note": "User's note about the issue",
-  "timestamp": "2023-05-01T12:34:56Z"
-}
-```
-
-### PATCH /api/reports/:id
-
-Update a report status.
-
-Request body:
-```json
-{
-  "status": "read" // or "unread", "archived"
-}
-```
+The backend should be implemented as a separate Next.js application that:
+- Provides API endpoints for submitting and retrieving reports
+- Connects to Supabase for data storage
+- Implements an admin dashboard for managing reports
 
 ## Admin Dashboard
 
@@ -81,3 +32,36 @@ The admin dashboard is available at the root URL (`/`) and provides:
 - Filtering by status
 - Ability to mark reports as read/unread/archived
 - Detailed view of each report
+
+
+## Development Setup
+
+### Prerequisites
+
+- Node.js and npm
+- Chrome browser
+- Docker (optional, for build commands)
+
+### Loading the Chrome Extension
+
+1. Open Chrome and navigate to `chrome://extensions/`
+2. Enable "Developer mode" by toggling the switch in the top right corner
+3. Click "Load unpacked" and select the `Extensions` folder from this repository
+4. The extension should now appear in your extensions list and be ready to use
+
+### Setting up the Next.js Backend
+
+1. Navigate to the `next-backend` directory
+2. Install dependencies:
+   ```
+   npm install
+   ```
+   or with legacy peer dependencies:
+   ```
+   npm install --legacy-peer-deps
+   ```
+3. Start the development server on port 3002:
+   ```
+   npm run dev -- -p 3002
+   ```
+4. The backend API will be available at `http://localhost:3002`

@@ -16,7 +16,7 @@ function injectStyles() {
         position: absolute;
         top: 0;
         right: 0;
-        background: #1a73e8;
+        background:rgb(40, 26, 232);
         color: white;
         font-size: 12px;
         padding: 4px 8px;
@@ -218,7 +218,7 @@ function handleSubmissionError(error, button) {
 function createFlagButton(targetElement) {
     const flag = document.createElement('div');
     flag.className = 'flag-btn';
-    flag.textContent = 'Flag';
+    flag.textContent = '🚩';
     flag.onclick = (e) => handleFlagButtonClick(e, targetElement);
     return flag;
 }
