@@ -1,4 +1,4 @@
-# Button Watcher Chrome Extension
+# UI Report Chrome Extension
 
 A Chrome extension that helps identify and report broken buttons on webpages. This extension highlights all buttons and links on a page, allows users to flag problematic ones, and stores reports in a Supabase database.
 
@@ -42,17 +42,14 @@ The admin dashboard is available at the root URL (`/`) and provides:
 - Chrome browser
 - Docker (optional, for build commands)
 
-### Loading the Chrome Extension
-
-1. Open Chrome and navigate to `chrome://extensions/`
-2. Enable "Developer mode" by toggling the switch in the top right corner
-3. Click "Load unpacked" and select the `Extensions` folder from this repository
-4. The extension should now appear in your extensions list and be ready to use
-
 ### Setting up the Next.js Backend
 
-1. Navigate to the `next-backend` directory
-2. Install dependencies:
+1. Clone Repo
+   ```
+   git clone https://github.com/mohamedjs/ui-report-system.git
+   ```
+2. Navigate to the `ui-report-system` directory
+3. Install dependencies:
    ```
    npm install
    ```
@@ -60,8 +57,20 @@ The admin dashboard is available at the root URL (`/`) and provides:
    ```
    npm install --legacy-peer-deps
    ```
-3. Start the development server on port 3002:
+4. Start the development server on port 3002:
    ```
    npm run dev -- -p 3002
    ```
-4. The backend API will be available at `http://localhost:3002`
+   
+   Alternatively, you can use Docker Compose:
+   ```
+   docker compose up
+   ```
+5. The backend API will be available at `http://localhost:3002`
+
+### Loading the Chrome Extension
+
+1. Open Chrome and navigate to `chrome://extensions/`
+2. Enable "Developer mode" by toggling the switch in the top right corner
+3. Click "Load unpacked" and select the `Extensions` folder from this repository
+4. The extension should now appear in your extensions list and be ready to use
