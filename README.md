@@ -8,14 +8,14 @@ A Chrome extension that helps identify and report broken buttons on webpages. Th
 - 🚩 Allows flagging problematic buttons with custom notes
 - 📊 Popup interface to view recent reports
 - 💾 Stores reports in Supabase database
-- 🔄 Works with dynamic content (SPAs, React apps, etc.)
+- 🔄 Works with dynamic content.
 
 ## Project Structure
 
 ### Chrome Extension (This Repository)
 
 - Content Script: Injects into webpages to highlight and enable flagging of buttons
-- Popup: React-based interface showing recent reports
+- Popup: JavaScript-based interface showing recent reports
 - Background Script: Handles communication with the backend API
 
 ### Backend (Separate Next.js Project)
