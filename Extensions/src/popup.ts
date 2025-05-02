@@ -1,12 +1,22 @@
-function getReports() {
+interface Report {
+  element_text: string | null;
+  updated_at: string;
+}
+
+function getReports(): void {
   fetch('http://localhost:3002/api/reports?limit=5', {
     headers: {
       'Content-Type': 'application/json'
     }
   })
     .then(res => res.json())
-    .then(data => {
+    .then((data: Report[]) => {
       const list = document.getElementById('report-list');
+      
+      if (!list) {
+        console.error('Report list element not found');
+        return;
+      }
       
       if (data.length === 0) {
         list.innerHTML = '<div class="no-reports">No reports found</div>';
@@ -32,7 +42,9 @@ function getReports() {
     })
     .catch(error => {
       const list = document.getElementById('report-list');
-      list.innerHTML = '<div class="no-reports">Failed to load reports</div>';
+      if (list) {
+        list.innerHTML = '<div class="no-reports">Failed to load reports</div>';
+      }
       console.error('Error fetching reports:', error);
     });
 }
@@ -41,5 +53,4 @@ function getReports() {
 getReports();
 
 // Refresh every 30 seconds
-setInterval(getReports, 30000);
-
+setInterval(getReports, 30000); 

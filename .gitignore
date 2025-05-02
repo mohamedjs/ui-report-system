@@ -6,8 +6,7 @@
 .pnp.js
 .env
 .idea
-
-
+Extensions/node_modules
 
 # testing
 /coverage
