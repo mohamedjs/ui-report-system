@@ -15,8 +15,9 @@ A Chrome extension that helps identify and report broken buttons on webpages. Th
 ### Chrome Extension (This Repository)
 
 - Content Script: Injects into webpages to highlight and enable flagging of buttons
-- Popup: JavaScript-based interface showing recent reports
+- Popup: TypeScript-based interface showing recent reports
 - Background Script: Handles communication with the backend API
+- Modular Architecture: Follows SOLID principles with specialized classes for UI, reporting, and text extraction
 
 ### Backend (Separate Next.js Project)
 
@@ -68,9 +69,18 @@ The admin dashboard is available at the root URL (`/`) and provides:
    ```
 5. The backend API will be available at `http://localhost:3002`
 
-### Loading the Chrome Extension
+### Building and Loading the Chrome Extension
 
-1. Open Chrome and navigate to `chrome://extensions/`
-2. Enable "Developer mode" by toggling the switch in the top right corner
-3. Click "Load unpacked" and select the `Extensions` folder from this repository
-4. The extension should now appear in your extensions list and be ready to use
+1. Navigate to the `Extensions` directory
+2. Install dependencies:
+   ```
+   npm install
+   ```
+3. Build the extension using webpack:
+   ```
+   npm run build
+   ```
+4. Open Chrome and navigate to `chrome://extensions/`
+5. Enable "Developer mode" by toggling the switch in the top right corner
+6. Click "Load unpacked" and select the `dist` folder from the `Extensions` directory
+7. The extension should now appear in your extensions list and be ready to use
